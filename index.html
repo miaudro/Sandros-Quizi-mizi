@@ -2,158 +2,185 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Ein kleines Quiz über mich 💘</title>
+<title>Quiz über Sandro 🐱</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        text-align: center;
-    }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
 
-    .container {
-        background: white;
-        padding: 25px;
-        border-radius: 20px;
-        width: 90%;
-        max-width: 420px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        animation: fadeIn 1s ease;
-    }
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    width: 92%;
+    max-width: 480px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 0.8s ease;
+}
 
-    img {
-        width: 100%;
-        border-radius: 15px;
-        margin-bottom: 15px;
-    }
+img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
 
-    h1 {
-        margin-bottom: 10px;
-    }
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
 
-    .question {
-        font-size: 1.2em;
-        margin: 20px 0;
-    }
+.question {
+    font-size: 1.6em;
+    margin: 25px 0;
+}
 
-    button {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        font-size: 1em;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        background: #ff4d6d;
-        color: white;
-        transition: transform 0.2s, background 0.2s;
-    }
+button {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    margin: 14px 0;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: #ff4d6d;
+    color: white;
+    transition: transform 0.2s, background 0.2s;
+}
 
-    button:hover {
-        transform: scale(1.05);
-        background: #e63950;
-    }
+button:hover {
+    transform: scale(1.05);
+    background: #e63950;
+}
 
-    .wrong {
-        color: #ff4d6d;
-        font-weight: bold;
-        margin-top: 10px;
-        animation: shake 0.4s;
-    }
+.wrong {
+    color: #ff4d6d;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 1.1em;
+    animation: shake 0.4s;
+}
 
-    #noBtn {
-        position: relative;
-    }
+#noBtn {
+    position: relative;
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    @keyframes shake {
-        0% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        50% { transform: translateX(5px); }
-        75% { transform: translateX(-5px); }
-        100% { transform: translateX(0); }
-    }
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-6px); }
+    100% { transform: translateX(0); }
+}
 </style>
 </head>
 
 <body>
 
 <div class="container" id="app">
-    <img src="https://images.unsplash.com/photo-1549921296-3b4a4b1c8c2c" alt="Love">
-    <h1>Hey du 💖</h1>
-    <p>Bevor wir weitermachen… kleines Quiz über mich 😏</p>
-    <button onclick="question1()">Start</button>
+    <img src="https://cataas.com/cat/says/Quiz%20ueber%20Sandro">
+    <h1>Quiz über Sandro 🐱</h1>
+    <p>Schauen wir mal, wie gut du mich kennst 😌</p>
+    <button onclick="q1()">Start</button>
 </div>
 
 <script>
-let freeHead = 0;
-
-function wrongAnswer() {
-    freeHead++;
+function wrong() {
     document.getElementById("feedback").innerHTML =
-        `<div class="wrong">Falsch 😌<br>+1 free head (${freeHead})</div>`;
+        `<div class="wrong">Falsch 😌<br>+1 free head</div>`;
 }
 
-function question1() {
-    document.getElementById("app").innerHTML = `
-        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c">
-        <div class="question">Was bin ich eher?</div>
-        <button onclick="wrongAnswer()">Mercedes</button>
-        <button onclick="question2()">BMW</button>
+function q1() {
+    app.innerHTML = `
+        <img src="https://cataas.com/cat/says/Autos">
+        <div class="question">Welche Automarke passt besser zu mir?</div>
+        <button onclick="wrong()">Mercedes</button>
+        <button onclick="q2()">BMW</button>
+        <button onclick="wrong()">Audi</button>
         <div id="feedback"></div>
     `;
 }
 
-function question2() {
-    document.getElementById("app").innerHTML = `
-        <img src="https://images.unsplash.com/photo-1617814076231-0fdc61f5d7c4">
-        <div class="question">Welches BMW Modell habe ich?</div>
-        <button onclick="wrongAnswer()">BMW F32</button>
-        <button onclick="finalQuestion()">BMW F36</button>
+function q2() {
+    app.innerHTML = `
+        <img src="https://cataas.com/cat/says/BMW">
+        <div class="question">Welches BMW Modell fahre ich?</div>
+        <button onclick="wrong()">F30</button>
+        <button onclick="wrong()">F31</button>
+        <button onclick="wrong()">F32</button>
+        <button onclick="q3()">F36</button>
         <div id="feedback"></div>
     `;
 }
 
-function finalQuestion() {
-    document.getElementById("app").innerHTML = `
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
-        <h1>Letzte Frage 💘</h1>
-        <div class="question">
-            Willst du mein Valentinstags-Date sein? 💕
-        </div>
-        <button onclick="yes()">JA 💖</button>
-        <button id="noBtn" onmouseover="moveNo()">Nein 😐</button>
+function q3() {
+    app.innerHTML = `
+        <img src="https://cataas.com/cat/says/Nachname">
+        <div class="question">Wie schreibt man meinen Nachnamen richtig?</div>
+        <button onclick="wrong()">de Crienis</button>
+        <button onclick="wrong()">de Crinnis</button>
+        <button onclick="q4()">de Crinis</button>
+        <div id="feedback"></div>
+    `;
+}
+
+function q4() {
+    app.innerHTML = `
+        <img src="https://cataas.com/cat/says/Kollegen">
+        <div class="question">Wer ist mein Lieblingskollege in der Arbeit?</div>
+        <button onclick="q5()">Tim</button>
+        <button onclick="wrong()">Marco</button>
+        <button onclick="wrong()">Patrik</button>
+        <div id="feedback"></div>
+    `;
+}
+
+function q5() {
+    app.innerHTML = `
+        <img src="https://cataas.com/cat/says/Finale">
+        <div class="question">Willst du mein Valentinstagsdate sein</div>
+        <button onclick="yes()">Ja</button>
+        <button id="noBtn" onmouseover="moveNo()">Nein</button>
     `;
 }
 
 function moveNo() {
-    const btn = document.getElementById("noBtn");
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-    btn.style.transform = `translate(${x}px, ${y}px)`;
+    const b = document.getElementById("noBtn");
+    const x = Math.random() * 260 - 130;
+    const y = Math.random() * 260 - 130;
+    b.style.transform = \`translate(\${x}px, \${y}px)\`;
 }
 
 function yes() {
-    document.getElementById("app").innerHTML = `
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
-        <h1>YAYYY 💞</h1>
-        <p>
-            Okay dann ist es offiziell 😌<br><br>
-            Valentinstag gehört uns 💘<br><br>
-            <strong>Free Head Punkte:</strong> ${freeHead} 😏
-        </p>
+    document.body.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:black;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        ">
+            <img 
+                src="https://media.tenor.com/2roX3uxz_68AAAAC/cat-kiss.gif"
+                style="max-width:100%; max-height:100%;"
+                alt="cat kissing camera"
+            >
+        </div>
     `;
 }
 </script>
