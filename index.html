@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Ein kleines Quiz über mich 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+    }
+
+    .container {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 420px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        animation: fadeIn 1s ease;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    .question {
+        font-size: 1.2em;
+        margin: 20px 0;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        font-size: 1em;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        background: #ff4d6d;
+        color: white;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        background: #e63950;
+    }
+
+    .wrong {
+        color: #ff4d6d;
+        font-weight: bold;
+        margin-top: 10px;
+        animation: shake 0.4s;
+    }
+
+    #noBtn {
+        position: relative;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container" id="app">
+    <img src="https://images.unsplash.com/photo-1549921296-3b4a4b1c8c2c" alt="Love">
+    <h1>Hey du 💖</h1>
+    <p>Bevor wir weitermachen… kleines Quiz über mich 😏</p>
+    <button onclick="question1()">Start</button>
+</div>
+
+<script>
+let freeHead = 0;
+
+function wrongAnswer() {
+    freeHead++;
+    document.getElementById("feedback").innerHTML =
+        `<div class="wrong">Falsch 😌<br>+1 free head (${freeHead})</div>`;
+}
+
+function question1() {
+    document.getElementById("app").innerHTML = `
+        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c">
+        <div class="question">Was bin ich eher?</div>
+        <button onclick="wrongAnswer()">Mercedes</button>
+        <button onclick="question2()">BMW</button>
+        <div id="feedback"></div>
+    `;
+}
+
+function question2() {
+    document.getElementById("app").innerHTML = `
+        <img src="https://images.unsplash.com/photo-1617814076231-0fdc61f5d7c4">
+        <div class="question">Welches BMW Modell habe ich?</div>
+        <button onclick="wrongAnswer()">BMW F32</button>
+        <button onclick="finalQuestion()">BMW F36</button>
+        <div id="feedback"></div>
+    `;
+}
+
+function finalQuestion() {
+    document.getElementById("app").innerHTML = `
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+        <h1>Letzte Frage 💘</h1>
+        <div class="question">
+            Willst du mein Valentinstags-Date sein? 💕
+        </div>
+        <button onclick="yes()">JA 💖</button>
+        <button id="noBtn" onmouseover="moveNo()">Nein 😐</button>
+    `;
+}
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function yes() {
+    document.getElementById("app").innerHTML = `
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+        <h1>YAYYY 💞</h1>
+        <p>
+            Okay dann ist es offiziell 😌<br><br>
+            Valentinstag gehört uns 💘<br><br>
+            <strong>Free Head Punkte:</strong> ${freeHead} 😏
+        </p>
+    `;
+}
+</script>
+
+</body>
+</html>
